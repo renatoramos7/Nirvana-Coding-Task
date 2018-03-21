@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <android.support.design.widget.AppBarLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarBaseWithTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="@dimen/DEFAULT_ELEVATION"
+            app:titleTextColor="@android:color/white"
+            style="@style/HeaderBar"
+            app:theme="@style/Base.AppTheme.NoActionBar.AppBarOverlay"
+            app:popupTheme="@style/Base.AppTheme.NoActionBar.PopupOverlay">
+
+         <TextView
+                android:id="@+id/toolbarTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="normal"
+                android:textSize="@dimen/DEFAULT_TEXT_SIZE_MEDIUM"
+                android:textColor="@color/DEFAULT_COLOR_WHITE"
+                android:layout_gravity="center"
+                style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"/>
+
+        </android.support.v7.widget.Toolbar>
+   </android.support.design.widget.AppBarLayout>
+

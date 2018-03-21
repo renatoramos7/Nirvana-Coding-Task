@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="DEFAULT_COLOR_WHITE">#ffffffff</color>
+    <color name="DEFAULT_BOLD_TEXT_VIEW_COLOR">#000000</color>
+    <color name="DEFAULT_NORMAL_TEXT_VIEW_COLOR">#4e4e4f</color>
+
+    <color name="MAIN_GUIDE_VIEW_HOLDER_DIVIDE_VIEW_BACKGROUND">#000000</color>
+
+</resources>

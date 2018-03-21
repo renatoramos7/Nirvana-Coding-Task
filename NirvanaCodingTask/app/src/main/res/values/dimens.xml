@@ -1,0 +1,22 @@
+<resources>
+
+
+    <!--Base dimens-->
+
+    <dimen name="DEFAULT_ELEVATION">4dp</dimen>
+
+    <dimen name="DEFAULT_TEXT_SIZE_SMALL">14dp</dimen>
+    <dimen name="DEFAULT_TEXT_SIZE_MEDIUM">18dp</dimen>
+    <dimen name="DEFAULT_TEXT_SIZE_LARGE">22dp</dimen>
+
+    <dimen name="DEFAULT_LAYOUT_VIEW_HEIGHT">199dp</dimen>
+
+    <dimen name="AVATAR_CIRCLE_IMAGE_VIEW_WIDTH_HEIGHT">80dp</dimen>
+    <dimen name="USER_VIEW_HOLDER_CARD_VIEW_PADDING">5dp</dimen>
+
+    <dimen name="VIEW_HOLDER_DEFAULT_LAYOUT_MARGIN_TOP">8dp</dimen>
+    <dimen name="MAIN_GUIDE_VIEW_HOLDER_PADDING">10dp</dimen>
+
+    <dimen name="MAIN_GUIDE_VIEW_HOLDER_LAYOUT_MARGIN_TOP">8dp</dimen>
+
+</resources>

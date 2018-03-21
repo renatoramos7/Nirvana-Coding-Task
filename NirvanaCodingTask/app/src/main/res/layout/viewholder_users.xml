@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp">
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/MAIN_GUIDE_VIEW_HOLDER_PADDING">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/avatarCircleImageView"
+        android:layout_width="@dimen/AVATAR_CIRCLE_IMAGE_VIEW_WIDTH_HEIGHT"
+        android:layout_height="@dimen/AVATAR_CIRCLE_IMAGE_VIEW_WIDTH_HEIGHT"
+        android:layout_marginTop="@dimen/VIEW_HOLDER_DEFAULT_LAYOUT_MARGIN_TOP"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="@dimen/DEFAULT_LAYOUT_VIEW_HEIGHT"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/VIEW_HOLDER_DEFAULT_LAYOUT_MARGIN_TOP"
+        android:layout_marginTop="16dp"
+        android:text=""
+        android:textColor="@color/DEFAULT_NORMAL_TEXT_VIEW_COLOR"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/avatarCircleImageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/seeAllReviewsTextView"
+        android:layout_width="@dimen/DEFAULT_LAYOUT_VIEW_HEIGHT"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/VIEW_HOLDER_DEFAULT_LAYOUT_MARGIN_TOP"
+        android:layout_marginTop="24dp"
+        android:drawableRight="@drawable/right_arrow"
+        android:textColor="@color/DEFAULT_BOLD_TEXT_VIEW_COLOR"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/avatarCircleImageView"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+
+</android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

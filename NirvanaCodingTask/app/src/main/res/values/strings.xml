@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Nirvana Coding Task - Kotlin</string>
+    <string name="STR_TITLE_ACTIVITY_USER">GitHub Users</string>
+    <string name="STR_TITLE_ACTIVITY_USER_DETAILS">User details</string>
+
+    <string name="STR_SEE_ALL_REVIEWS_TEXT_VIEW">See all details</string>
+    <string name="MSG_ERROR_INTERNET_CONNECTION">Please, verify your internet connection!</string>
+
+
+</resources>

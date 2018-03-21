@@ -1,0 +1,80 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    // kotlin version
+    ext.kotlin_version = '1.2.30'
+
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        //"com.android.support:appcompat-v7:$rootProject.ext.supportLibVersion"
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+project.ext{
+
+    //configuration
+    applicationId = "com.renatoramos.nirvanacodingtask"
+    versionCode = 1
+    versionName = "1.0"
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+    buildToolsVersion = "27.0.3"
+    minSdkVersion = 19
+
+    // Google Dependencies.
+    supportLibVersion = "27.1.0"
+    gsonLibVersion = "2.8.2"
+    constraintLayoutLibVersion = "1.0.2"
+
+    // Dagger Dependencies.
+    daggerLibVersion = "2.15"
+
+    // ReactiveX Dependencies.
+    rxandroidLibVersion = "2.0.2"
+    rxjavaLibVersion = "2.1.10"
+    rxjavaAdapterLibVersion = "2.4.0"
+
+    // Square Dependencies.
+    retrofit2LibVersion = "2.3.0"
+    okhttp3LibVersion = "3.10.0"
+    butterknifeLibVersion = "8.8.1"
+
+    // Image cache
+    glideLibVersion = "4.6.1"
+
+    //EventBus
+    eventBusLibVersion = "3.1.1"
+
+    //Ui
+    circleimageviewLibVersion = "2.2.0"
+
+    // Runtime permissions
+    dexterPermissionsLibVersion = "4.2.0"
+
+    // Test Dependencies.
+    junitLibVersion = "4.12"
+    mockitoLibVersion = "1.10.19"
+    testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+    espressoCoreLibVersion = "3.0.1"
+    supporTestRunner  = "1.0.1"
+}

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".presentation.ui.userdetails.UserDetailsActivity">
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/MAIN_GUIDE_VIEW_HOLDER_PADDING">
+
+        <ImageView
+            android:id="@+id/userDetailsImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/MAIN_GUIDE_VIEW_HOLDER_LAYOUT_MARGIN_TOP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/nameTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@color/DEFAULT_BOLD_TEXT_VIEW_COLOR"
+            android:textStyle="bold"
+            android:layout_marginTop="@dimen/MAIN_GUIDE_VIEW_HOLDER_LAYOUT_MARGIN_TOP"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/userDetailsImageView" />
+
+        <TextView
+            android:id="@+id/bioTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/MAIN_GUIDE_VIEW_HOLDER_LAYOUT_MARGIN_TOP"
+            android:text=""
+            android:textColor="@color/DEFAULT_NORMAL_TEXT_VIEW_COLOR"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+        <TextView
+            android:id="@+id/companyTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/MAIN_GUIDE_VIEW_HOLDER_LAYOUT_MARGIN_TOP"
+            android:text=""
+            android:textColor="@color/DEFAULT_NORMAL_TEXT_VIEW_COLOR"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bioTextView" />
+
+        <TextView
+            android:id="@+id/locationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/MAIN_GUIDE_VIEW_HOLDER_LAYOUT_MARGIN_TOP"
+            android:text=""
+            android:textColor="@color/DEFAULT_NORMAL_TEXT_VIEW_COLOR"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/companyTextView" />
+
+
+        <TextView
+            android:id="@+id/repoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/MAIN_GUIDE_VIEW_HOLDER_LAYOUT_MARGIN_TOP"
+            android:text=""
+            android:textColor="@color/DEFAULT_NORMAL_TEXT_VIEW_COLOR"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationTextView" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</android.support.v4.widget.NestedScrollView>
