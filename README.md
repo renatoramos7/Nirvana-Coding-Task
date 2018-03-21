@@ -1,7 +1,6 @@
 # Nirvana-Coding-Task
-Nirvana Coding Task
-
-**Important!** This is only a Sample projetect. 
+**Important!** 
+This is only a Sample projetect. 
 
 # Implementation Details
 
@@ -9,10 +8,9 @@ MVP pattern and inspired by the Clean.
 
 Three main packages: Commons, infraestruture and Ui.
 
-- **Commons:** Keep the domain rules (which in this case are none), models and aggregations models.
-- **infraestruture:** Responsible for any data used in the application. Uses the Repository pattern.
-- **Ui (View + Presenter):** Responsible views. It is also responsible for the presentation (Presenter).
-
+- **Commons:** Responsible for all Commons files in project.
+- **infraestruture:** Responsible for any data used in the application.
+- **Ui (View + Presenter):** Responsible views and extencions . It is also responsible for the presentation (Presenter).
 
 ### Model View Presenter
 
