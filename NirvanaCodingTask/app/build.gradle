@@ -62,9 +62,7 @@ android {
 
     productFlavors {}
 
-    packagingOptions {
-        //exclude 'META-INF/rxjava.properties'
-    }
+    packagingOptions {}
 }
 
 dependencies {
@@ -103,9 +101,6 @@ dependencies {
     // Image cache
     implementation "com.github.bumptech.glide:glide:$rootProject.ext.glideLibVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.ext.glideLibVersion"
-
-    //EventBus
-    //implementation "org.greenrobot:eventbus:$rootProject.ext.eventBusLibVersion"
 
     //Ui
     implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewLibVersion"
