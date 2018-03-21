@@ -27,3 +27,19 @@ Material Design pattern in available time.
 3. **Kotlin Extensions:** For view binding.
 4. **Glide:** For image loading.
 5. **Gson:** Retrofit integration for deserialize.
+7. **Dagger2:** For dependency injection.
+
+### Installing
+Just have the project and clean and build in your Android Studio
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/Ckdeveloper/Nirvana-Coding-Task/tags). 
+
+## Authors
+
+* **Renato Ramos** - *Initial work*
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
