@@ -1,7 +1,6 @@
 # Nirvana-Coding-Task
 **Important!** 
-Hello friend,  can you hear me ?
-<br />Hello friend,  can you see me ?
+<br />Hello friend, can you hear me ?
 
 <br />Be welcome to my humble project.
 <br />This is only a sample project and can be modified every time it needs. 
