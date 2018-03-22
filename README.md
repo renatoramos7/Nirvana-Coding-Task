@@ -1,6 +1,11 @@
 # Nirvana-Coding-Task
 **Important!** 
-This is only a Sample project. 
+Hello friend,  can you hear me ?
+<br />Hello friend,  can you see me ?
+
+<br />Be welcome to my humble project.
+<br />This is only a sample project and can be modified every time it needs. 
+<br />Afterall nothing are wrote in the stones.
 
 # Implementation Details
 
