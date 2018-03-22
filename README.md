@@ -4,7 +4,7 @@
 
 <br />Be welcome to my humble project.
 <br />This is only a sample project and can be modified every time it needs. 
-<br />Afterall nothing are wrote in the stones.
+<br />After All nothing are wrote in the stones..
 
 # Implementation Details
 
