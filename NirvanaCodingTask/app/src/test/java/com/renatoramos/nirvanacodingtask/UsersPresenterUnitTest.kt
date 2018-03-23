@@ -34,7 +34,7 @@ class UsersPresenterUnitTest : BasePresenterTest() {
         verify(iUserInteractor, times(0)).getUsers(presenter)
     }
 
-    
+
     @Test
     fun addition_isCorrect() {
         Assert.assertEquals(4, 2 + 2)
