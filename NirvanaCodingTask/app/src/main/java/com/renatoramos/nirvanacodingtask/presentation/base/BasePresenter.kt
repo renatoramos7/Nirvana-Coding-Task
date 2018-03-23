@@ -16,13 +16,13 @@ abstract class BasePresenter<V> protected constructor(protected val mView: V) {
      * Contains common setup actions needed for all presenters, if any.
      * Subclasses may override this.
      */
-    abstract fun startPresenter()
+    abstract fun onStart()
 
     /**
      * Contains common cleanup actions needed for all presenters, if any.
      * Subclasses may override this.
      */
-    fun stop() {
+    fun onStop() {
         getCompositeDisposable().clear()
     }
 

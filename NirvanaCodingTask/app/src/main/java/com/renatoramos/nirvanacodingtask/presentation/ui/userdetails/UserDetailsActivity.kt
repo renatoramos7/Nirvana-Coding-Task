@@ -26,7 +26,7 @@ class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
 
     override fun onStop() {
         super.onStop()
-        presenter.stop()
+        presenter.onStop()
     }
 
     override fun onBackPressed() {
@@ -64,7 +64,7 @@ class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
 
     private fun initialize() {
         presenter.setIdUser(intent.getIntExtra(ConstantsUtils.ID_USER, -1))
-        presenter.startPresenter()
+        presenter.onStart()
     }
 
 }

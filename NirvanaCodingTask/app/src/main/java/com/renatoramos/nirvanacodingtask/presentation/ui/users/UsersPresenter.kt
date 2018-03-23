@@ -1,10 +1,10 @@
 package com.renatoramos.nirvanacodingtask.presentation.ui.users
 
-import com.renatoramos.nirvanacodingtask.infraestruture.data.UserDataClass
-import com.renatoramos.nirvanacodingtask.infraestruture.networking.config.DisplayableItemListCallback
-import com.renatoramos.nirvanacodingtask.infraestruture.networking.services.UserService
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
+import com.renatoramos.nirvanacodingtask.infrastructure.networking.config.BaseInteractorDisplayableList
+import com.renatoramos.nirvanacodingtask.infrastructure.networking.services.UserInteractor
 import com.renatoramos.nirvanacodingtask.presentation.base.BasePresenter
-import com.renatoramos.nirvanacodingtask.presentation.base.DisplayableItem
 import javax.inject.Inject
 
 /**
@@ -12,20 +12,20 @@ import javax.inject.Inject
  */
 
 
-class UsersPresenter @Inject constructor(view: UsersContract.View, private val userService: UserService) : BasePresenter<UsersContract.View>(view), UsersContract.Presenter {
+class UsersPresenter @Inject constructor(view: UsersContract.View, private val userInteractor: UserInteractor) : BasePresenter<UsersContract.View>(view), UsersContract.Presenter {
 
-    private lateinit var displayableItemList: List<DisplayableItem>
+    private lateinit var baseDisplayableItemList: List<BaseDisplayableItem>
 
-    override fun startPresenter() {
+    override fun onStart() {
         getUsersInServer()
     }
 
     private fun getUsersInServer() {
         if (mView.isInternetConnected()) {
-            addDisposable(userService.getUsers(object : DisplayableItemListCallback {
+            addDisposable(userInteractor.getUsers(object : BaseInteractorDisplayableList {
 
-                override fun onSuccess(displayableItemList: List<DisplayableItem>) {
-                    this@UsersPresenter.displayableItemList = displayableItemList
+                override fun onSuccess(baseDisplayableItemList: List<BaseDisplayableItem>) {
+                    this@UsersPresenter.baseDisplayableItemList = baseDisplayableItemList
                 }
 
                 override fun onError(throwable: Throwable) {
@@ -33,7 +33,7 @@ class UsersPresenter @Inject constructor(view: UsersContract.View, private val u
                 }
 
                 override fun onComplete() {
-                    mView.createAdapter(displayableItemList)
+                    mView.createAdapter(baseDisplayableItemList)
                     mView.displayAdapter()
                 }
             }))
@@ -43,7 +43,7 @@ class UsersPresenter @Inject constructor(view: UsersContract.View, private val u
     }
 
     override fun onOpenUserDetailsScreen(position: Int) {
-        val userDataClass = displayableItemList[position] as UserDataClass
+        val userDataClass = baseDisplayableItemList[position] as UserDataClass
         mView.openUserDetails(userDataClass.id)
     }
 }

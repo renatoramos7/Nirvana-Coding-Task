@@ -1,8 +1,8 @@
-package com.renatoramos.nirvanacodingtask.infraestruture.data
+package com.renatoramos.nirvanacodingtask.infrastructure.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.renatoramos.nirvanacodingtask.presentation.base.DisplayableItem
+import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 
 /**
  * Created by renatoramos on 19.03.18.
@@ -25,4 +25,4 @@ data class UserDataClass(@SerializedName("login")
                     @Expose var eventsUrl: String?, @SerializedName("received_events_url")
                     @Expose var receivedEventsUrl: String?, @SerializedName("type")
                     @Expose var type: String?, @SerializedName("site_admin")
-                    @Expose var siteAdmin: Boolean?): DisplayableItem()
+                    @Expose var siteAdmin: Boolean?): BaseDisplayableItem()

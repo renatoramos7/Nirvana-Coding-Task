@@ -1,7 +1,7 @@
-package com.renatoramos.nirvanacodingtask.infraestruture.networking
+package com.renatoramos.nirvanacodingtask.infrastructure.networking
 
-import com.renatoramos.nirvanacodingtask.infraestruture.data.UserDataClass
-import com.renatoramos.nirvanacodingtask.infraestruture.data.UserDetailsDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsDataClass
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path

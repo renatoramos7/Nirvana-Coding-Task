@@ -1,7 +1,7 @@
 package com.renatoramos.nirvanacodingtask.commons.di.modules
 
-import com.renatoramos.nirvanacodingtask.infraestruture.networking.NetworkService
-import com.renatoramos.nirvanacodingtask.infraestruture.networking.services.UserService
+import com.renatoramos.nirvanacodingtask.infrastructure.networking.NetworkService
+import com.renatoramos.nirvanacodingtask.infrastructure.networking.services.UserService
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit

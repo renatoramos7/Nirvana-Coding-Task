@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.renatoramos.nirvanacodingtask.R
-import com.renatoramos.nirvanacodingtask.infraestruture.data.UserDataClass
-import com.renatoramos.nirvanacodingtask.presentation.base.DisplayableItem
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 
 /**
  * Created by renatoramos on 20.03.18.
  */
-class UsersRecyclerAdapter(private val context: Context, private val displayableItemList: List<DisplayableItem>, private val usersAdapterListener: UsersAdapterListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class UsersRecyclerAdapter(private val context: Context, private val baseDisplayableItemList: List<BaseDisplayableItem>, private val usersAdapterListener: UsersAdapterListener) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     // Just to control the click in this
     interface UsersAdapterListener {
@@ -28,14 +28,14 @@ class UsersRecyclerAdapter(private val context: Context, private val displayable
     }
 
     override fun getItemCount(): Int {
-        return displayableItemList?.size
+        return baseDisplayableItemList?.size
     }
 
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
 
         // Just bind View Objects.
         val usersViewHolder = viewHolder as UsersViewHolder
-        val userDataClass = displayableItemList[position] as UserDataClass
+        val userDataClass = baseDisplayableItemList[position] as UserDataClass
 
         usersViewHolder.titleTextView?.text = userDataClass.login
         usersViewHolder.seeAllReviewsTextView?.text = context.getString(R.string.STR_SEE_ALL_REVIEWS_TEXT_VIEW)

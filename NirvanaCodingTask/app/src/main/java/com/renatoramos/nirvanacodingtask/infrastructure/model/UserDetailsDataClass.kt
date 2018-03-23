@@ -1,8 +1,8 @@
-package com.renatoramos.nirvanacodingtask.infraestruture.data
+package com.renatoramos.nirvanacodingtask.infrastructure.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import com.renatoramos.nirvanacodingtask.presentation.base.DisplayableItem
+import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 
 /**
  * Created by renatoramos on 19.03.18.
@@ -38,7 +38,7 @@ data class UserDetailsDataClass(
                                    @SerializedName("followers") @Expose var followers: Int?,
                                    @SerializedName("following") @Expose var following: Int?,
                                    @SerializedName("created_at") @Expose var createdAt: String?,
-                                   @SerializedName("updated_at") @Expose var updatedAt: String?): DisplayableItem()
+                                   @SerializedName("updated_at") @Expose var updatedAt: String?): BaseDisplayableItem()
 
 
 

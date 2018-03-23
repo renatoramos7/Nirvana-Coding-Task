@@ -43,6 +43,27 @@ android {
         }
     }*/
 
+    sourceSets {
+        //Dedicated directories for tests written in Kotlin
+        test.java.srcDirs += 'src/test/kotlin'
+        androidTest.java.srcDirs += 'src/androidTest/kotlin'
+    }
+
+    afterEvaluate {
+        android.sourceSets.all { sourceSet ->
+            if (!sourceSet.name.startsWith('test') || !sourceSet.name.startsWith('androidTest')) {
+                sourceSet.kotlin.setSrcDirs([])
+            }
+        }
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
 
     buildTypes {
 
@@ -67,6 +88,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     // Android Dependencies.
@@ -77,7 +100,7 @@ dependencies {
     implementation "com.android.support:recyclerview-v7:$rootProject.ext.supportLibVersion"
     implementation "com.android.support.constraint:constraint-layout:$rootProject.ext.constraintLayoutLibVersion"
 
-    // Google Dependencies.
+    // Gson.
     implementation "com.google.code.gson:gson:$rootProject.ext.gsonLibVersion"
 
     // Dagger Dependencies.
@@ -95,6 +118,8 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$rootProject.ext.retrofit2LibVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.ext.retrofit2LibVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.ext.rxjavaAdapterLibVersion"
+
+    // OkHttp
     implementation "com.squareup.okhttp3:okhttp:$rootProject.ext.okhttp3LibVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.ext.okhttp3LibVersion"
 
@@ -106,8 +131,18 @@ dependencies {
     implementation "de.hdodenhof:circleimageview:$rootProject.ext.circleimageviewLibVersion"
 
     // Test Dependencies.
+    // JUnit
     testImplementation "junit:junit:$rootProject.ext.junitLibVersion"
-    testImplementation "org.mockito:mockito-all:$rootProject.ext.mockitoLibVersion"
+    testImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoLibVersion"
+
+    // Kotlin Test Support
+    testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
+
+    // Mockito-Kotlin
+    testImplementation "com.nhaarman:mockito-kotlin:$rootProject.ext.mockitoKotlinLibVersion"
+
+    // Espresso
     androidTestImplementation "com.android.support.test:runner:$rootProject.ext.supporTestRunner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoCoreLibVersion"
 

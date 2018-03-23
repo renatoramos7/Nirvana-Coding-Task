@@ -8,7 +8,7 @@ import com.renatoramos.nirvanacodingtask.R
 import com.renatoramos.nirvanacodingtask.commons.utils.ConstantsUtils
 import com.renatoramos.nirvanacodingtask.commons.utils.MethodsUtils
 import com.renatoramos.nirvanacodingtask.presentation.base.BaseActivity
-import com.renatoramos.nirvanacodingtask.presentation.base.DisplayableItem
+import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsActivity
 import com.renatoramos.nirvanacodingtask.presentation.ui.users.adapters.UsersRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_users.*
@@ -32,13 +32,13 @@ class UsersActivity : BaseActivity(), UsersContract.View {
 
     override fun onStop() {
         super.onStop()
-        presenter.stop()
+        presenter.onStop()
     }
 
-    override fun createAdapter(displayableList: List<DisplayableItem>) {
+    override fun createAdapter(baseDisplayableList: List<BaseDisplayableItem>) {
         usersRecyclerAdapter = UsersRecyclerAdapter(
                 baseContext,
-                displayableList,
+                baseDisplayableList,
                 object: UsersRecyclerAdapter.UsersAdapterListener{
                     override fun onClickCell(position: Int) {
                         presenter.onOpenUserDetailsScreen(position)
@@ -70,7 +70,7 @@ class UsersActivity : BaseActivity(), UsersContract.View {
     }
 
     private fun initialize() {
-        presenter.startPresenter()
+        presenter.onStart()
     }
 
     private fun loadScreenComponents() {

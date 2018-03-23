@@ -1,6 +1,6 @@
 package com.renatoramos.nirvanacodingtask.presentation.ui.users
 
-import com.renatoramos.nirvanacodingtask.presentation.base.DisplayableItem
+import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 
 /**
  * Created by renatoramos on 18.03.18.
@@ -10,7 +10,7 @@ interface UsersContract {
 
     interface View {
 
-        fun createAdapter(displayableList: List<DisplayableItem>)
+        fun createAdapter(baseDisplayableList: List<BaseDisplayableItem>)
 
         fun displayAdapter()
 
