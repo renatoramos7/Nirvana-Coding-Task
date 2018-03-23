@@ -14,13 +14,13 @@ import javax.inject.Singleton
 open class ApplicationModule(private val mApplication: Application) {
     @Provides
     @Singleton
-    internal fun providesApplication(): Application {
+    internal fun provideApplication(): Application {
         return mApplication
     }
 
     @Provides
     @Singleton
-    internal fun providerApplicationContext(): Context {
+    internal fun provideApplicationContext(): Context {
         return mApplication.applicationContext
     }
 }

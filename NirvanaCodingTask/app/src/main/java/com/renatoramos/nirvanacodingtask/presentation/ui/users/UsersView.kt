@@ -7,17 +7,19 @@ import android.widget.Toast
 import com.renatoramos.nirvanacodingtask.R
 import com.renatoramos.nirvanacodingtask.commons.utils.ConstantsUtils
 import com.renatoramos.nirvanacodingtask.commons.utils.MethodsUtils
-import com.renatoramos.nirvanacodingtask.presentation.base.BaseActivity
 import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
-import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsActivity
+import com.renatoramos.nirvanacodingtask.presentation.base.BaseView
+import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsView
 import com.renatoramos.nirvanacodingtask.presentation.ui.users.adapters.UsersRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_users.*
 import kotlinx.android.synthetic.main.toolbar_base_with_title.*
 import javax.inject.Inject
 
 
-class UsersActivity : BaseActivity(), UsersContract.View {
+class UsersView : BaseView(), UsersContract.View {
 
+    //@Inject
+    //lateinit var presenter : UsersContract.Presenter
     @Inject
     lateinit var presenter : UsersPresenter
 
@@ -64,7 +66,7 @@ class UsersActivity : BaseActivity(), UsersContract.View {
     }
 
     override fun openUserDetails(idUser: Int?) {
-        val intent = Intent(this@UsersActivity,UserDetailsActivity::class.java)
+        val intent = Intent(this@UsersView,UserDetailsView::class.java)
         intent.putExtra(ConstantsUtils.ID_USER, idUser)
         startActivity(intent)
     }

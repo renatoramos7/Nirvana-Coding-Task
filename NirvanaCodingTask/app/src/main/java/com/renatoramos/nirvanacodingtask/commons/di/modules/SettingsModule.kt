@@ -14,7 +14,7 @@ open class SettingsModule {
     @Provides
     @Singleton
     @Named(BASE_URL)
-    internal fun providesServerUrl(): String {
+    internal fun provideServerUrl(): String {
         return "https://api.github.com/"
     }
 

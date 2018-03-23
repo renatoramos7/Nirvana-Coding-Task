@@ -1,5 +1,6 @@
 package com.renatoramos.nirvanacodingtask.infrastructure.networking.services
 
+import com.renatoramos.nirvanacodingtask.infrastructure.interactors.user.IUserInteractor
 import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDataClass
 import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsDataClass
 import com.renatoramos.nirvanacodingtask.infrastructure.networking.NetworkService
@@ -13,29 +14,29 @@ import io.reactivex.schedulers.Schedulers
  * Created by renatoramos on 19.03.18.
  */
 
-class UserInteractor(private val networkService: NetworkService) {
+class UserInteractor(private val networkService: NetworkService) : IUserInteractor {
 
-    fun getUsers(baseInteractorDisplayableList: BaseInteractorDisplayableList): DisposableObserver<*> {
+   override fun getUsers(baseInteractorDisplayableList: BaseInteractorDisplayableList): DisposableObserver<*> {
         return networkService.getUsers()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(object : DisposableObserver<List<UserDataClass>>() {
 
                     override fun onNext(displayableItemList: List<UserDataClass>) {
-                        baseInteractorDisplayableList.onSuccess(displayableItemList)
+                        baseInteractorDisplayableList.onApiSuccess(displayableItemList)
                     }
 
                     override fun onError(throwable: Throwable) {
-                        baseInteractorDisplayableList.onError(throwable)
+                        baseInteractorDisplayableList.onApiError(throwable)
                     }
 
                     override fun onComplete() {
-                        baseInteractorDisplayableList.onComplete()
+                        baseInteractorDisplayableList.onApiComplete()
                     }
                 })
     }
 
-    fun getUserById(id: Int?, baseInteractorDisplayableItem: BaseInteractorDisplayableItem): DisposableObserver<*> {
+    override  fun getUserById(id: Int?, baseInteractorDisplayableItem: BaseInteractorDisplayableItem): DisposableObserver<*> {
         return networkService.getUserById(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

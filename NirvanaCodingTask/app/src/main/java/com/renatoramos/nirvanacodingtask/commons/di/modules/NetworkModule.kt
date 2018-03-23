@@ -4,6 +4,8 @@ import android.app.Application
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.renatoramos.nirvanacodingtask.BuildConfig
+import com.renatoramos.nirvanacodingtask.infrastructure.networking.NetworkService
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -23,9 +25,15 @@ import javax.inject.Singleton
 @Module
 open class NetworkModule {
 
+    companion object {
+        private const val CACHE_SIZE_10_MB = 10 * 1024 * 1024
+        private const val TIMEOUT: Long = 5
+        private const val CHILD_PATH: String = "responses"
+    }
+
     @Provides
     @Singleton
-    internal fun providesOkHttpCache(application: Application): Cache {
+    internal fun provideOkHttpCache(application: Application): Cache {
         val cacheSize = CACHE_SIZE_10_MB
         val httpCacheDirectory = File(application.cacheDir, CHILD_PATH)
         return Cache(httpCacheDirectory, cacheSize.toLong())
@@ -33,7 +41,7 @@ open class NetworkModule {
 
     @Provides
     @Singleton
-    internal fun providesGson(): Gson {
+    internal fun provideGson(): Gson {
         return GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'")
@@ -42,15 +50,15 @@ open class NetworkModule {
 
     @Provides
     @Singleton
-    internal fun providesHttpLoggingInterceptor(): HttpLoggingInterceptor {
+    internal fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        httpLoggingInterceptor.level = if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
         return httpLoggingInterceptor
     }
 
     @Provides
     @Singleton
-    internal fun providesOkHttpClient(cache: Cache, httpLoggingInterceptor: HttpLoggingInterceptor, application: Application): OkHttpClient {
+    internal fun provideOkHttpClient(cache: Cache, httpLoggingInterceptor: HttpLoggingInterceptor, application: Application): OkHttpClient {
 
         return OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
@@ -63,19 +71,19 @@ open class NetworkModule {
 
     @Provides
     @Singleton
-    internal fun providesGsonConverterFactory(gson: Gson): GsonConverterFactory {
+    internal fun provideGsonConverterFactory(gson: Gson): GsonConverterFactory {
         return GsonConverterFactory.create(gson)
     }
 
     @Provides
     @Singleton
-    internal fun providesRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory {
+    internal fun provideRxJava2CallAdapterFactory(): RxJava2CallAdapterFactory {
         return RxJava2CallAdapterFactory.create()
     }
 
     @Provides
     @Singleton
-    internal fun providesRetrofit(gsonConverterFactory: GsonConverterFactory, okHttpClient: OkHttpClient,
+    internal fun provideRetrofit(gsonConverterFactory: GsonConverterFactory, okHttpClient: OkHttpClient,
                                   rxJava2CallAdapterFactory: RxJava2CallAdapterFactory,
                                   @Named(SettingsModule.BASE_URL) baseUrl: String): Retrofit {
         return Retrofit.Builder()
@@ -86,9 +94,10 @@ open class NetworkModule {
                 .build()
     }
 
-    companion object {
-        private const val CACHE_SIZE_10_MB = 10 * 1024 * 1024
-        private const val TIMEOUT: Long = 5
-        private const val CHILD_PATH: String = "responses"
+    @Provides
+    @Singleton
+    fun provideNetworkService(retrofit: Retrofit): NetworkService {
+        return retrofit.create(NetworkService::class.java)
     }
+
 }

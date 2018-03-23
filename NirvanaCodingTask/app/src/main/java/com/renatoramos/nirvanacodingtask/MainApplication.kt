@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.Application
 import com.renatoramos.nirvanacodingtask.commons.di.DaggerAppComponent
 import com.renatoramos.nirvanacodingtask.commons.di.modules.ApplicationModule
+import com.renatoramos.nirvanacodingtask.commons.di.modules.NetworkInteractorModule
 import com.renatoramos.nirvanacodingtask.commons.di.modules.NetworkModule
 import com.renatoramos.nirvanacodingtask.commons.di.modules.SettingsModule
 import dagger.android.AndroidInjector
@@ -39,8 +40,9 @@ open class MainApplication : Application(), HasActivityInjector{
                 .builder()
                 .application(this)
                 .applicationModule(ApplicationModule(this))
-                .networkModule(NetworkModule())
                 .settingsModule(SettingsModule())
+                .networkModule(NetworkModule())
+                .networkInteractorModule(NetworkInteractorModule())
                 .build()
                 .inject(this)
     }

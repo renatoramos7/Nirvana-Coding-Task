@@ -1,7 +1,8 @@
 package com.renatoramos.nirvanacodingtask.presentation.ui.users.module
 
-import com.renatoramos.nirvanacodingtask.presentation.ui.users.UsersActivity
 import com.renatoramos.nirvanacodingtask.presentation.ui.users.UsersContract
+import com.renatoramos.nirvanacodingtask.presentation.ui.users.UsersPresenter
+import com.renatoramos.nirvanacodingtask.presentation.ui.users.UsersView
 import dagger.Binds
 import dagger.Module
 
@@ -12,6 +13,9 @@ import dagger.Module
 abstract class UsersActivityModule {
 
     @Binds
-    internal abstract fun provideMainView(usersActivity: UsersActivity): UsersContract.View
+    internal abstract fun provideUsersView(usersActivity: UsersView): UsersContract.View
+
+    @Binds
+    internal abstract fun provideUsersPresenter(usersPresenter: UsersPresenter): UsersContract.Presenter
 
 }

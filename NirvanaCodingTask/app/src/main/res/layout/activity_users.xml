@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
-tools:context=".presentation.ui.users.UsersActivity">
+tools:context=".presentation.ui.users.UsersView">
 
     <include layout="@layout/toolbar_base_with_title"/>
 

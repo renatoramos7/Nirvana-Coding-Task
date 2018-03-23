@@ -8,14 +8,14 @@ import com.bumptech.glide.Glide
 import com.renatoramos.nirvanacodingtask.R
 import com.renatoramos.nirvanacodingtask.commons.utils.ConstantsUtils
 import com.renatoramos.nirvanacodingtask.commons.utils.MethodsUtils
-import com.renatoramos.nirvanacodingtask.presentation.base.BaseActivity
+import com.renatoramos.nirvanacodingtask.presentation.base.BaseView
 import kotlinx.android.synthetic.main.activity_user_details.*
 import javax.inject.Inject
 
-class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
+class UserDetailsView : BaseView(),  UserDetailsContract.View {
 
     @Inject
-    lateinit var presenter : UserDetailsPresenter
+    lateinit var presenter : UserDetailsContract.Presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,12 +26,12 @@ class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
 
     override fun onStop() {
         super.onStop()
-        presenter.onStop()
+        //presenter.onStop()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        this@UserDetailsActivity.finish()
+        this@UserDetailsView.finish()
     }
 
     override fun checkInternetConnection(): Boolean {
@@ -64,7 +64,7 @@ class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
 
     private fun initialize() {
         presenter.setIdUser(intent.getIntExtra(ConstantsUtils.ID_USER, -1))
-        presenter.onStart()
+        //presenter.onStart()
     }
 
 }

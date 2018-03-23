@@ -15,7 +15,7 @@
         android:theme="@style/Base.AppTheme.NoActionBar">
 
 
-        <activity android:name=".presentation.ui.users.UsersActivity">
+        <activity android:name=".presentation.ui.users.UsersView">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".presentation.ui.userdetails.UserDetailsActivity" />
+        <activity android:name=".presentation.ui.userdetails.UserDetailsView" />
 
     </application>
 

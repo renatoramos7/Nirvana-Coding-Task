@@ -3,8 +3,8 @@ package com.renatoramos.nirvanacodingtask.commons.di
 import com.renatoramos.nirvanacodingtask.MainApplication
 import com.renatoramos.nirvanacodingtask.commons.di.builder.ActivityBuilder
 import com.renatoramos.nirvanacodingtask.commons.di.modules.ApplicationModule
+import com.renatoramos.nirvanacodingtask.commons.di.modules.NetworkInteractorModule
 import com.renatoramos.nirvanacodingtask.commons.di.modules.NetworkModule
-import com.renatoramos.nirvanacodingtask.commons.di.modules.NetworkServicesModule
 import com.renatoramos.nirvanacodingtask.commons.di.modules.SettingsModule
 import dagger.BindsInstance
 import dagger.Component
@@ -21,8 +21,8 @@ import javax.inject.Singleton
         ApplicationModule::class,
         ActivityBuilder::class,
         SettingsModule::class,
-        NetworkServicesModule::class,
-        NetworkModule::class))
+        NetworkModule::class,
+        NetworkInteractorModule::class))
 interface AppComponent {
 
     fun inject(mainApplication: MainApplication)
@@ -35,6 +35,7 @@ interface AppComponent {
         fun applicationModule(applicationModule: ApplicationModule): Builder
         fun settingsModule(settingsModule: SettingsModule): Builder
         fun networkModule(networkModule: NetworkModule): Builder
+        fun networkInteractorModule(networkInteractorModule: NetworkInteractorModule): Builder
         fun build(): AppComponent
     }
 }

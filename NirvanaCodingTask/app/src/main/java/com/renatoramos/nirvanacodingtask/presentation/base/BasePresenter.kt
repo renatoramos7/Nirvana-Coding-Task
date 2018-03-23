@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable
  * Created by renatoramos on 19.03.18.
  */
 
-abstract class BasePresenter<V> protected constructor(protected val mView: V) {
+abstract class BasePresenter<out V> protected constructor(protected val mView: V) {
 
     private var mCompositeDisposable: CompositeDisposable? = null
 
@@ -25,6 +25,7 @@ abstract class BasePresenter<V> protected constructor(protected val mView: V) {
     fun onStop() {
         getCompositeDisposable().clear()
     }
+
 
     protected fun addDisposable(disposable: Disposable) {
         getCompositeDisposable().add(disposable)

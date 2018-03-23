@@ -1,9 +1,9 @@
 package com.renatoramos.nirvanacodingtask.presentation.ui.userdetails
 
+import com.renatoramos.nirvanacodingtask.infrastructure.interactors.user.IUserInteractor
 import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsDataClass
 import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 import com.renatoramos.nirvanacodingtask.infrastructure.networking.config.BaseInteractorDisplayableItem
-import com.renatoramos.nirvanacodingtask.infrastructure.networking.services.UserInteractor
 import com.renatoramos.nirvanacodingtask.presentation.base.BasePresenter
 import javax.inject.Inject
 
@@ -11,7 +11,8 @@ import javax.inject.Inject
  * Created by renatoramos on 19.03.18.
  */
 
-class UserDetailsPresenter @Inject constructor(view: UserDetailsContract.View, private val userInteractor: UserInteractor): BasePresenter<UserDetailsContract.View>(view), UserDetailsContract.Presenter {
+class UserDetailsPresenter @Inject constructor(view: UserDetailsContract.View, private val iUserInteractor: IUserInteractor): BasePresenter<UserDetailsContract.View>(view),
+        UserDetailsContract.Presenter,BaseInteractorDisplayableItem {
 
     private var idUser: Int = 0
 
@@ -20,19 +21,19 @@ class UserDetailsPresenter @Inject constructor(view: UserDetailsContract.View, p
     }
 
     private fun getUserDetails(){
+        addDisposable(iUserInteractor.getUserById(idUser,this@UserDetailsPresenter))
+    }
 
-        addDisposable(userInteractor.getUserById(idUser, object : BaseInteractorDisplayableItem {
-            override fun onSuccess(baseDisplayableItem: BaseDisplayableItem) {
-                loadAllUserDetails(baseDisplayableItem as UserDetailsDataClass)
-            }
-            override fun onError(throwable: Throwable) {
-                mView.displayError(throwable.message.orEmpty())
-            }
+    override fun onSuccess(baseDisplayableItem: BaseDisplayableItem) {
+        loadAllUserDetails(baseDisplayableItem as UserDetailsDataClass)
+    }
 
-            override fun onComplete() {
+    override fun onError(throwable: Throwable) {
+        mView.displayError(throwable.message.orEmpty())
+    }
 
-            }
-        }))
+    override fun onComplete() {
+
     }
 
     override fun setIdUser(idUser: Int) {
