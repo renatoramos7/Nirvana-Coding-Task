@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.renatoramos.nirvanacodingtask.R
-import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserData
 import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 
 /**
@@ -35,7 +35,7 @@ class UsersRecyclerAdapter(private val context: Context, private val baseDisplay
 
         // Just bind View Objects.
         val usersViewHolder = viewHolder as UsersViewHolder
-        val userDataClass = baseDisplayableItemList[position] as UserDataClass
+        val userDataClass = baseDisplayableItemList[position] as UserData
 
         usersViewHolder.titleTextView?.text = userDataClass.login
         usersViewHolder.seeAllReviewsTextView?.text = context.getString(R.string.STR_SEE_ALL_REVIEWS_TEXT_VIEW)

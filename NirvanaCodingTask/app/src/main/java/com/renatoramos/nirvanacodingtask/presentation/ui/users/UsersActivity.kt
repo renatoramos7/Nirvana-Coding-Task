@@ -5,21 +5,20 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.renatoramos.nirvanacodingtask.R
-import com.renatoramos.nirvanacodingtask.commons.utils.ConstantsUtils
-import com.renatoramos.nirvanacodingtask.commons.utils.MethodsUtils
+import com.renatoramos.nirvanacodingtask.commons.extensions.isInternetConnected
+import com.renatoramos.nirvanacodingtask.commons.extensions.makeTextToast
+import com.renatoramos.nirvanacodingtask.commons.constant.Constants
 import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
-import com.renatoramos.nirvanacodingtask.presentation.base.BaseView
-import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsView
+import com.renatoramos.nirvanacodingtask.presentation.base.BaseActivity
+import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsActivity
 import com.renatoramos.nirvanacodingtask.presentation.ui.users.adapters.UsersRecyclerAdapter
 import kotlinx.android.synthetic.main.activity_users.*
 import kotlinx.android.synthetic.main.toolbar_base_with_title.*
 import javax.inject.Inject
 
 
-class UsersView : BaseView(), UsersContract.View {
+class UsersActivity : BaseActivity(), UsersContract.View {
 
-    //@Inject
-    //lateinit var presenter : UsersContract.Presenter
     @Inject
     lateinit var presenter : UsersPresenter
 
@@ -54,20 +53,20 @@ class UsersView : BaseView(), UsersContract.View {
     }
 
     override fun isInternetConnected(): Boolean {
-        return MethodsUtils.isInternetConnected(baseContext)
+        return baseContext.isInternetConnected()
     }
 
     override fun displayError(error: String) {
-        MethodsUtils.makeTextToast(baseContext, error, Toast.LENGTH_LONG).show()
+        baseContext.makeTextToast( error, Toast.LENGTH_LONG).show()
     }
 
     override fun displayErrorInternetConnection() {
-        MethodsUtils.makeTextToast(baseContext, getString(R.string.MSG_ERROR_INTERNET_CONNECTION), Toast.LENGTH_LONG).show()
+        baseContext.makeTextToast( getString(R.string.MSG_ERROR_INTERNET_CONNECTION), Toast.LENGTH_LONG).show()
     }
 
     override fun openUserDetails(idUser: Int?) {
-        val intent = Intent(this@UsersView,UserDetailsView::class.java)
-        intent.putExtra(ConstantsUtils.ID_USER, idUser)
+        val intent = Intent(this@UsersActivity,UserDetailsActivity::class.java)
+        intent.putExtra(Constants.ID_USER, idUser)
         startActivity(intent)
     }
 

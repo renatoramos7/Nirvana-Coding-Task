@@ -1,7 +1,8 @@
 package com.renatoramos.nirvanacodingtask.infrastructure.networking
 
-import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDataClass
-import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserData
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsData
+import io.reactivex.Flowable
 import io.reactivex.Observable
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,8 +15,8 @@ import retrofit2.http.Path
 interface NetworkService {
 
     @GET("users")
-    fun getUsers(): Observable<List<UserDataClass>>
+    fun getUsers(): Flowable<List<UserData>>
 
     @GET("users/{id}")
-    fun getUserById(@Path("id") id: Int?): Observable<UserDetailsDataClass>
+    fun getUserById(@Path("id") id: Int?): Observable<UserDetailsData>
 }

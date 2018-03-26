@@ -12,7 +12,7 @@ import javax.inject.Singleton
  */
 
 @Module
-class NetworkInteractorModule{
+open class NetworkInteractorModule{
 
     @Provides
     @Singleton

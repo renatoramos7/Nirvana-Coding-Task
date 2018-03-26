@@ -6,16 +6,17 @@ import android.text.util.Linkify
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.renatoramos.nirvanacodingtask.R
-import com.renatoramos.nirvanacodingtask.commons.utils.ConstantsUtils
-import com.renatoramos.nirvanacodingtask.commons.utils.MethodsUtils
-import com.renatoramos.nirvanacodingtask.presentation.base.BaseView
+import com.renatoramos.nirvanacodingtask.commons.extensions.isInternetConnected
+import com.renatoramos.nirvanacodingtask.commons.extensions.makeTextToast
+import com.renatoramos.nirvanacodingtask.commons.constant.Constants
+import com.renatoramos.nirvanacodingtask.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_user_details.*
 import javax.inject.Inject
 
-class UserDetailsView : BaseView(),  UserDetailsContract.View {
+class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
 
     @Inject
-    lateinit var presenter : UserDetailsContract.Presenter
+    lateinit var presenter : UserDetailsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,24 +27,24 @@ class UserDetailsView : BaseView(),  UserDetailsContract.View {
 
     override fun onStop() {
         super.onStop()
-        //presenter.onStop()
+        presenter.onStop()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        this@UserDetailsView.finish()
+        this@UserDetailsActivity.finish()
     }
 
     override fun checkInternetConnection(): Boolean {
-        return MethodsUtils.isInternetConnected(baseContext)
+        return baseContext.isInternetConnected()
     }
 
     override fun displayErrorInternetConnection() {
-        MethodsUtils.makeTextToast(baseContext, getString(R.string.MSG_ERROR_INTERNET_CONNECTION), Toast.LENGTH_LONG).show()
+        baseContext.makeTextToast( getString(R.string.MSG_ERROR_INTERNET_CONNECTION), Toast.LENGTH_LONG).show()
     }
 
     override fun displayError(error: String) {
-        MethodsUtils.makeTextToast(baseContext, error, Toast.LENGTH_LONG).show()
+        baseContext.makeTextToast( error, Toast.LENGTH_LONG).show()
     }
 
     override fun showUserDetails(avatarUrl: String?, name: String?, bio: String?, company: String?, location: String?, repo: String?) {
@@ -63,8 +64,8 @@ class UserDetailsView : BaseView(),  UserDetailsContract.View {
     }
 
     private fun initialize() {
-        presenter.setIdUser(intent.getIntExtra(ConstantsUtils.ID_USER, -1))
-        //presenter.onStart()
+        presenter.setIdUser(intent.getIntExtra(Constants.ID_USER, -1))
+        presenter.onStart()
     }
 
 }

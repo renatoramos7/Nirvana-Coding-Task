@@ -1,7 +1,7 @@
 package com.renatoramos.nirvanacodingtask.presentation.ui.userdetails
 
 import com.renatoramos.nirvanacodingtask.infrastructure.interactors.user.IUserInteractor
-import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsData
 import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 import com.renatoramos.nirvanacodingtask.infrastructure.networking.config.BaseInteractorDisplayableItem
 import com.renatoramos.nirvanacodingtask.presentation.base.BasePresenter
@@ -21,11 +21,16 @@ class UserDetailsPresenter @Inject constructor(view: UserDetailsContract.View, p
     }
 
     private fun getUserDetails(){
-        addDisposable(iUserInteractor.getUserById(idUser,this@UserDetailsPresenter))
+        addDisposable(iUserInteractor.getUserById(idUser,this@UserDetailsPresenter)
+                .subscribe(
+                        { baseDisplayableItem -> onSuccess(baseDisplayableItem) },
+                        { throwable -> onError(throwable) },
+                        { onComplete() }
+                ))
     }
 
     override fun onSuccess(baseDisplayableItem: BaseDisplayableItem) {
-        loadAllUserDetails(baseDisplayableItem as UserDetailsDataClass)
+        loadAllUserDetails(baseDisplayableItem as UserDetailsData)
     }
 
     override fun onError(throwable: Throwable) {
@@ -40,13 +45,13 @@ class UserDetailsPresenter @Inject constructor(view: UserDetailsContract.View, p
        this@UserDetailsPresenter.idUser = idUser
     }
 
-    private fun loadAllUserDetails(userDetailsDataClass: UserDetailsDataClass) {
-        mView.showUserDetails(userDetailsDataClass.avatarUrl,
-                userDetailsDataClass.name,
-                userDetailsDataClass.bio,
-                userDetailsDataClass.company,
-                userDetailsDataClass.location,
-                userDetailsDataClass.htmlUrl)
+    private fun loadAllUserDetails(userDetailsData: UserDetailsData) {
+        mView.showUserDetails(userDetailsData.avatarUrl,
+                userDetailsData.name,
+                userDetailsData.bio,
+                userDetailsData.company,
+                userDetailsData.location,
+                userDetailsData.htmlUrl)
     }
 
 }

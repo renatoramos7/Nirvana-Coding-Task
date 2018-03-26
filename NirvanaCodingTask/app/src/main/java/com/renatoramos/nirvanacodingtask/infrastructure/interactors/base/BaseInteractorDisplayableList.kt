@@ -7,7 +7,7 @@ import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayab
  */
 
 interface BaseInteractorDisplayableList {
-    fun onApiSuccess(baseDisplayableItemList: List<BaseDisplayableItem>)
-    fun onApiError(throwable: Throwable)
-    fun onApiComplete()
+    fun onSuccess(baseDisplayableItemList: List<BaseDisplayableItem>)
+    fun onError(throwable: Throwable)
+    fun onComplete()
 }

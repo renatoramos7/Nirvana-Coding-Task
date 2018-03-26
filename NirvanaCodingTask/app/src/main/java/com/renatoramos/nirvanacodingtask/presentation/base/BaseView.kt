@@ -1,8 +1,6 @@
 package com.renatoramos.nirvanacodingtask.presentation.base
 
-import dagger.android.support.DaggerAppCompatActivity
-
 /**
- * Created by renatoramos on 18.03.18.
+ * Created by renatoramos on 24.03.18.
  */
-open class BaseView : DaggerAppCompatActivity()
+interface BaseView

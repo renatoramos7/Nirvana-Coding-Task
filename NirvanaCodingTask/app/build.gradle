@@ -139,9 +139,6 @@ dependencies {
     testImplementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     testImplementation "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
 
-    // Mockito-Kotlin
-    testImplementation "com.nhaarman:mockito-kotlin:$rootProject.ext.mockitoKotlinLibVersion"
-
     // Espresso
     androidTestImplementation "com.android.support.test:runner:$rootProject.ext.supporTestRunner"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoCoreLibVersion"

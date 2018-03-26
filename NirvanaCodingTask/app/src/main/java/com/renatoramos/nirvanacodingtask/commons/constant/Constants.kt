@@ -1,8 +1,8 @@
-package com.renatoramos.nirvanacodingtask.commons.utils
+package com.renatoramos.nirvanacodingtask.commons.constant
 
 /**
  * Created by renatoramos on 20.03.18.
  */
-object ConstantsUtils {
+object Constants {
     const val ID_USER = "idUser"
 }

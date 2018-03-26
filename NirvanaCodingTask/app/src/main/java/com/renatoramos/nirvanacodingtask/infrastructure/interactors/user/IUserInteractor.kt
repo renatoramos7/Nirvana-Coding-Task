@@ -1,16 +1,19 @@
 package com.renatoramos.nirvanacodingtask.infrastructure.interactors.user
 
-import com.renatoramos.nirvanacodingtask.infrastructure.interactors.base.BaseInteractor
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserData
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDetailsData
 import com.renatoramos.nirvanacodingtask.infrastructure.networking.config.BaseInteractorDisplayableItem
 import com.renatoramos.nirvanacodingtask.infrastructure.networking.config.BaseInteractorDisplayableList
-import io.reactivex.observers.DisposableObserver
+import io.reactivex.Flowable
+import io.reactivex.Observable
 
 /**
- * Created by renatoramos on 23.03.18.
+ * This interface is because we need it for tests.
  */
-interface IUserInteractor : BaseInteractor {
+interface IUserInteractor {
 
-    fun getUsers(baseInteractorDisplayableList: BaseInteractorDisplayableList): DisposableObserver<*>
+    fun getUsersList(baseInteractorDisplayableList: BaseInteractorDisplayableList): Flowable<List<UserData>>
 
-    fun getUserById(id: Int?, baseInteractorDisplayableItem: BaseInteractorDisplayableItem): DisposableObserver<*>
+    fun getUserById(id: Int?, baseInteractorDisplayableItem: BaseInteractorDisplayableItem): Observable<UserDetailsData>
+
 }

@@ -23,7 +23,9 @@ interface UsersContract {
         fun openUserDetails(idUser: Int?)
     }
 
-    interface Presenter{
+    interface Presenter {
+
+        fun getUsersList()
 
         fun onOpenUserDetailsScreen(position: Int)
     }

@@ -8,7 +8,7 @@ import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayab
  * Created by renatoramos on 19.03.18.
  */
 
-data class UserDataClass(@SerializedName("login")
+data class UserData(@SerializedName("login")
                     @Expose var login: String?, @SerializedName("id")
                     @Expose var id: Int?, @SerializedName("avatar_url")
                     @Expose var avatarUrl: String?, @SerializedName("gravatar_id")
@@ -26,3 +26,5 @@ data class UserDataClass(@SerializedName("login")
                     @Expose var receivedEventsUrl: String?, @SerializedName("type")
                     @Expose var type: String?, @SerializedName("site_admin")
                     @Expose var siteAdmin: Boolean?): BaseDisplayableItem()
+
+

@@ -1,9 +1,9 @@
 package com.renatoramos.nirvanacodingtask.commons.di.builder
 
 import com.renatoramos.nirvanacodingtask.commons.di.scope.ActivityScope
-import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsView
+import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsActivity
 import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.module.UserDetailsActivityModule
-import com.renatoramos.nirvanacodingtask.presentation.ui.users.UsersView
+import com.renatoramos.nirvanacodingtask.presentation.ui.users.UsersActivity
 import com.renatoramos.nirvanacodingtask.presentation.ui.users.module.UsersActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -18,10 +18,10 @@ abstract class ActivityBuilder {
 
     @ActivityScope
     @ContributesAndroidInjector(modules = arrayOf(UsersActivityModule::class))
-    internal abstract fun bindMainActivityModule(): UsersView
+    internal abstract fun bindMainActivityModule(): UsersActivity
 
     @ActivityScope
     @ContributesAndroidInjector(modules = arrayOf(UserDetailsActivityModule::class))
-    internal abstract fun bindUserDetailsActivity(): UserDetailsView
+    internal abstract fun bindUserDetailsActivity(): UserDetailsActivity
 
 }

@@ -1,7 +1,7 @@
 package com.renatoramos.nirvanacodingtask.presentation.ui.users
 
 import com.renatoramos.nirvanacodingtask.infrastructure.interactors.user.IUserInteractor
-import com.renatoramos.nirvanacodingtask.infrastructure.model.UserDataClass
+import com.renatoramos.nirvanacodingtask.infrastructure.model.UserData
 import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 import com.renatoramos.nirvanacodingtask.infrastructure.networking.config.BaseInteractorDisplayableList
 import com.renatoramos.nirvanacodingtask.presentation.base.BasePresenter
@@ -15,36 +15,41 @@ import javax.inject.Inject
 class UsersPresenter @Inject constructor(view: UsersContract.View, private val iUserInteractor: IUserInteractor) : BasePresenter<UsersContract.View>(view),
         UsersContract.Presenter, BaseInteractorDisplayableList {
 
-    private lateinit var baseDisplayableItemList: List<BaseDisplayableItem>
+    private var baseDisplayableItemList: List<BaseDisplayableItem> = listOf()
 
     override fun onStart() {
-        getUsersInServer()
+        getUsersList()
     }
 
-    private fun getUsersInServer() {
+    override fun getUsersList() {
         if (mView.isInternetConnected()) {
-            addDisposable(iUserInteractor.getUsers(this@UsersPresenter))
+            addDisposable(iUserInteractor.getUsersList(this@UsersPresenter)
+                    .subscribe(
+                            { list -> onSuccess(list) },
+                            { throwable -> onError(throwable) },
+                            { onComplete() }
+                    ))
         } else {
             mView.displayErrorInternetConnection()
         }
     }
 
-    override fun onApiSuccess(baseDisplayableItemList: List<BaseDisplayableItem>) {
-        this@UsersPresenter.baseDisplayableItemList = baseDisplayableItemList
+    override fun onSuccess(baseDisplayableItemList: List<BaseDisplayableItem>) {
+        this.baseDisplayableItemList = baseDisplayableItemList
     }
 
-    override fun onApiError(throwable: Throwable) {
+    override fun onError(throwable: Throwable) {
         mView.displayError(throwable.message.orEmpty())
     }
 
-    override fun onApiComplete() {
+    override fun onComplete() {
         mView.createAdapter(baseDisplayableItemList)
         mView.displayAdapter()
     }
 
 
     override fun onOpenUserDetailsScreen(position: Int) {
-        val userDataClass = baseDisplayableItemList[position] as UserDataClass
+        val userDataClass = baseDisplayableItemList[position] as UserData
         mView.openUserDetails(userDataClass.id)
     }
 }

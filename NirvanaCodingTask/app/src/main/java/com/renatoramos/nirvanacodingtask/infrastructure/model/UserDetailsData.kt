@@ -8,7 +8,7 @@ import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayab
  * Created by renatoramos on 19.03.18.
  */
 
-data class UserDetailsDataClass(
+data class UserDetailsData(
                                    @SerializedName("login") @Expose var login: String?,
                                    @SerializedName("id") @Expose var id: Int?,
                                    @SerializedName("avatar_url") @Expose var avatarUrl: String?,
