@@ -12,21 +12,25 @@ import javax.inject.Inject
  */
 
 class UserDetailsPresenter @Inject constructor(view: UserDetailsContract.View, private val iUserInteractor: IUserInteractor): BasePresenter<UserDetailsContract.View>(view),
-        UserDetailsContract.Presenter,BaseInteractorDisplayableItem {
+        UserDetailsContract.Presenter, BaseInteractorDisplayableItem {
 
     private var idUser: Int = 0
 
     override fun onStart() {
-        getUserDetails()
+        getUserDetails(idUser)
     }
 
-    private fun getUserDetails(){
-        addDisposable(iUserInteractor.getUserById(idUser,this@UserDetailsPresenter)
-                .subscribe(
-                        { baseDisplayableItem -> onSuccess(baseDisplayableItem) },
-                        { throwable -> onError(throwable) },
-                        { onComplete() }
-                ))
+    override fun getUserDetails(idUser : Int){
+        if (mView.isInternetConnected()) {
+            addDisposable(iUserInteractor.getUserById(idUser, this)
+                    .subscribe(
+                            { baseDisplayableItem -> onSuccess(baseDisplayableItem) },
+                            { throwable -> onError(throwable) },
+                            { onComplete() }
+                    ))
+        } else {
+            mView.displayErrorInternetConnection()
+        }
     }
 
     override fun onSuccess(baseDisplayableItem: BaseDisplayableItem) {
@@ -37,12 +41,10 @@ class UserDetailsPresenter @Inject constructor(view: UserDetailsContract.View, p
         mView.displayError(throwable.message.orEmpty())
     }
 
-    override fun onComplete() {
-
-    }
+    override fun onComplete() {}
 
     override fun setIdUser(idUser: Int) {
-       this@UserDetailsPresenter.idUser = idUser
+       this.idUser = idUser
     }
 
     private fun loadAllUserDetails(userDetailsData: UserDetailsData) {

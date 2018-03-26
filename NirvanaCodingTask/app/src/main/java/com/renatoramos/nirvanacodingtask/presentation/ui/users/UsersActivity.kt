@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.widget.Toast
 import com.renatoramos.nirvanacodingtask.R
+import com.renatoramos.nirvanacodingtask.commons.constant.Constants
 import com.renatoramos.nirvanacodingtask.commons.extensions.isInternetConnected
 import com.renatoramos.nirvanacodingtask.commons.extensions.makeTextToast
-import com.renatoramos.nirvanacodingtask.commons.constant.Constants
 import com.renatoramos.nirvanacodingtask.infrastructure.model.base.BaseDisplayableItem
 import com.renatoramos.nirvanacodingtask.presentation.base.BaseActivity
 import com.renatoramos.nirvanacodingtask.presentation.ui.userdetails.UserDetailsActivity

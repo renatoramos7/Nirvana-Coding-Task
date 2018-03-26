@@ -23,7 +23,7 @@ class UsersPresenter @Inject constructor(view: UsersContract.View, private val i
 
     override fun getUsersList() {
         if (mView.isInternetConnected()) {
-            addDisposable(iUserInteractor.getUsersList(this@UsersPresenter)
+            addDisposable(iUserInteractor.getUsersList(this)
                     .subscribe(
                             { list -> onSuccess(list) },
                             { throwable -> onError(throwable) },

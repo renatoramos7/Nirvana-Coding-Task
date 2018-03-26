@@ -8,7 +8,7 @@ import io.reactivex.Flowable
 import io.reactivex.Observable
 
 /**
- * This interface is because we need it for tests.
+ * This interface is because Unit tests.
  */
 interface IUserInteractor {
 

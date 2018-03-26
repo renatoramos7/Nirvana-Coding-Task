@@ -66,8 +66,10 @@ project.ext{
 
     // Test Dependencies.
     junitLibVersion = "4.12"
-    mockitoLibVersion = "1.10.19"
+    mockitoLibVersion = "2.16.0"
+    mockitoKotlinLibVersion = "1.4.0"
     testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     espressoCoreLibVersion = "3.0.1"
     supporTestRunner  = "1.0.1"
+
 }

@@ -6,9 +6,9 @@ import android.text.util.Linkify
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.renatoramos.nirvanacodingtask.R
+import com.renatoramos.nirvanacodingtask.commons.constant.Constants
 import com.renatoramos.nirvanacodingtask.commons.extensions.isInternetConnected
 import com.renatoramos.nirvanacodingtask.commons.extensions.makeTextToast
-import com.renatoramos.nirvanacodingtask.commons.constant.Constants
 import com.renatoramos.nirvanacodingtask.presentation.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_user_details.*
 import javax.inject.Inject
@@ -21,7 +21,6 @@ class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details)
-
         initialize()
     }
 
@@ -35,7 +34,7 @@ class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
         this@UserDetailsActivity.finish()
     }
 
-    override fun checkInternetConnection(): Boolean {
+    override fun isInternetConnected(): Boolean {
         return baseContext.isInternetConnected()
     }
 
