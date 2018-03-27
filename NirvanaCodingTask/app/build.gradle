@@ -136,7 +136,7 @@ dependencies {
 
     //Mockito
     testImplementation "org.mockito:mockito-core:$rootProject.ext.mockitoLibVersion"
-    androidTestCompile "org.mockito:mockito-android:$rootProject.ext.mockitoLibVersion"
+    androidTestImplementation "org.mockito:mockito-android:$rootProject.ext.mockitoLibVersion"
     testImplementation "com.nhaarman:mockito-kotlin:$rootProject.ext.mockitoKotlinLibVersion"
     testImplementation "org.mockito:mockito-inline:$rootProject.ext.mockitoLibVersion"
 

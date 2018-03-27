@@ -65,7 +65,7 @@ class UsersActivity : BaseActivity(), UsersContract.View {
     }
 
     override fun openUserDetails(idUser: Int?) {
-        val intent = Intent(this@UsersActivity,UserDetailsActivity::class.java)
+        val intent = Intent(this,UserDetailsActivity::class.java)
         intent.putExtra(Constants.ID_USER, idUser)
         startActivity(intent)
     }

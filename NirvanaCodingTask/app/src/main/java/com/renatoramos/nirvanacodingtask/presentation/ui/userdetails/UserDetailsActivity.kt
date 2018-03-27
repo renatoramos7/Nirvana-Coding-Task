@@ -31,7 +31,7 @@ class UserDetailsActivity : BaseActivity(),  UserDetailsContract.View {
 
     override fun onBackPressed() {
         super.onBackPressed()
-        this@UserDetailsActivity.finish()
+        this.finish()
     }
 
     override fun isInternetConnected(): Boolean {
