@@ -19,5 +19,4 @@ open class NetworkInteractorModule{
     fun providesUserInteractor(networkService: NetworkService): IUserInteractor {
         return UserInteractor(networkService)
     }
-
 }

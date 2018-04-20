@@ -44,6 +44,4 @@ class UsersRecyclerAdapter(private val context: Context, private val baseDisplay
                 .load(userDataClass.avatarUrl)
                 .into(usersViewHolder.avatarCircleImageView!!)
     }
-
-
 }
